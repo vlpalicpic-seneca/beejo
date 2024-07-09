@@ -20,7 +20,7 @@ const Feature = (props) => {
 
                 // fetch the details of each of the 5 items
                 const promises = ids.map(id =>
-                    fetch(`https://beejo-server.vercel.app/${props.section}/?id=${id}`)
+                    fetch(`https://beejo-server.vercel.app/${props.section}?id=${id}`)
                         .then(response => {
                             if (!response.ok) {
                                 throw new Error(`Request for ${props.section} ${id} failed`);

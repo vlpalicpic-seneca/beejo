@@ -12,7 +12,7 @@ const DetailPage = (props) => {
 
     //fetch detail of specific film
     useEffect(() => {
-        fetch(`https://beejo-server.vercel.app/${props.section}/?id=${id}`)
+        fetch(`https://beejo-server.vercel.app/${props.section}?id=${id}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
