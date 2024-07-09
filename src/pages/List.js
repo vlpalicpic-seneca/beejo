@@ -16,7 +16,7 @@ const List = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/${props.section}`);
+                const response = await fetch(`https://beejo-server.vercel.app/${props.section}`);
                 if (!response.ok) {
                     throw new Error(`Failed to fetch content for section ${props.section}`);
                 }

@@ -17,7 +17,7 @@ const Home = () => {
 
   //fetches Heroes from server
   useEffect(() => {
-    fetch('http://localhost:3001/heroes')
+    fetch('https://beejo-server.vercel.app/heroes')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

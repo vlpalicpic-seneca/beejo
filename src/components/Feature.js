@@ -9,7 +9,7 @@ const Feature = (props) => {
         const fetchData = async () => {
             try {
                 // fetch the list of all items
-                const listResponse = await fetch(`http://localhost:3001/${props.section}`);
+                const listResponse = await fetch(`https://beejo-server.vercel.app/${props.section}`);
                 if (!listResponse.ok) {
                     throw new Error(`Failed to fetch list for ${props.section}`);
                 }
@@ -20,7 +20,7 @@ const Feature = (props) => {
 
                 // fetch the details of each of the 5 items
                 const promises = ids.map(id =>
-                    fetch(`http://localhost:3001/${props.section}/?id=${id}`)
+                    fetch(`https://beejo-server.vercel.app/${props.section}/?id=${id}`)
                         .then(response => {
                             if (!response.ok) {
                                 throw new Error(`Request for ${props.section} ${id} failed`);
