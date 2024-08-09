@@ -12,20 +12,18 @@ const DetailPage = (props) => {
 
     //fetch detail of specific film
     useEffect(() => {
-        fetch(`https://beejo-server.vercel.app/${props.section}?id=${id}`)
+        fetch(`https://beejo-backend.onrender.com/${props.section}/details?id=${id}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                return response.json();
+                return response.json(); 
             })
             .then(data => {
-                if (Array.isArray(data) && data.length > 0) {
                     //store details on state
-                    setFilm(data[0]);
-                } else {
-                    throw new Error('Film not found');
-                }
+                    console.log(data);
+                    setFilm(data);
+                    console.log(film);
             })
             .catch(error => console.error('Error fetching:', error));
     }, [id, props.section]);

@@ -52,8 +52,8 @@ const Detail = (props) => {
 
     const [slider, setSlider] = React.useState(null);
 
-    const top = useBreakpointValue({ base: '40%', md: '55%' });
-    const side = useBreakpointValue({ base: '5%', md: '40px' });
+    // const top = useBreakpointValue({ base: '40%', md: '55%' });
+    // const side = useBreakpointValue({ base: '5%', md: '40px' });
 
     return (
         <Box width="98%"

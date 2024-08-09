@@ -5,22 +5,22 @@ import { Link } from 'react-router-dom';
 const Feature = (props) => {
     const [sectionContent, setSectionContent] = useState([]);
 
-    useEffect(() => {
+     useEffect(() => {
         const fetchData = async () => {
             try {
-                // fetch the list of all items
-                const listResponse = await fetch(`https://beejo-server.vercel.app/${props.section}`);
+                // Fetch the list of all items
+                const listResponse = await fetch(`https://beejo-backend.onrender.com/${props.section}`);
                 if (!listResponse.ok) {
                     throw new Error(`Failed to fetch list for ${props.section}`);
                 }
                 const itemList = await listResponse.json();
 
-                // get the id of the first 5 items
-                const ids = itemList.slice(0, 5).map(item => item.id);
+                // Get the id of the first 5 items
+                const ids = itemList.slice(0, 5).map(item => item._id); // Use _id here
 
-                // fetch the details of each of the 5 items
+                // Fetch the details of each of the 5 items
                 const promises = ids.map(id =>
-                    fetch(`https://beejo-server.vercel.app/${props.section}?id=${id}`)
+                    fetch(`https://beejo-backend.onrender.com/show/details?id=${id}`)
                         .then(response => {
                             if (!response.ok) {
                                 throw new Error(`Request for ${props.section} ${id} failed`);
@@ -31,11 +31,10 @@ const Feature = (props) => {
 
                 const content = await Promise.all(promises);
 
-                //extract the returned data
-                const data = content.map(data => data[0]);
-
-                //update state for the section content
-                setSectionContent(data);
+                // Update state for the section content
+                setSectionContent(content);
+                console.log("Content : ");
+                // console.log(sectionContent);
             } catch (error) {
                 console.error('Error fetching content:', error);
             }
@@ -65,7 +64,7 @@ const Feature = (props) => {
                     <GridItem
                         width={{ base: "50%", md: "auto" }}
                         justifySelf="center">
-                        <Link to={`/${props.section}/${data.id}`}>
+                        <Link to={`/${props.section}/${data._id}`}>
                             <Box borderWidth="1px"
                                 borderRadius="0px"
                                 overflow="hidden"
@@ -92,6 +91,6 @@ const Feature = (props) => {
             </Link>
         </Box>
     );
-};
+}
 
 export default Feature;

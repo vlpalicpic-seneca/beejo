@@ -8,7 +8,11 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Home from './pages/Home';
 import List from './pages/List';
+import Search from './pages/Search';
 import DetailPage from './pages/DetailPage';
+import UserDashboard from './pages/UserDashboard';
+import NotFound from './pages/NotFound';
+
 
 
 const theme = extendTheme({
@@ -60,8 +64,12 @@ const App = () => {
             <Route path="/series" element={<List section='series' />} />
             <Route path="/movies/:id" element={<DetailPage section='movies' />} />
             <Route path="/series/:id" element={<DetailPage section='series' />} />
+            <Route path="/user" element={<UserDashboard />} />
+            <Route path="/not-found" element={<NotFound />} />
+            <Route path="/search" element={<Search />} />
             <Route path="/register" />
             <Route path="/login" />
+            
           </Routes>
         </div>
         {/* <RegisterModal isOpen={isRegisterOpen} onClose={onCloseRegister} /> */}

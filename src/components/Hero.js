@@ -112,7 +112,7 @@ const Hero = (props) => {
                         <Box backdropFilter='auto'
                             backdropBlur='5px'
                             backgroundColor="rgba(55,47,47,0.7)">
-                            <Link to={`/${card.section}/${card.id}`}>
+                            <Link to={`/${card.section}/${card._id}`}>
                                 <Container size="container.lg"
                                     height="550px"
                                     position="relative">
